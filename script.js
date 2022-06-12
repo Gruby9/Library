@@ -11,6 +11,7 @@ let tiles = document.querySelector('.tiles')
 
 function addBookToLibrary(title, author, pages) {
     const newBook = new Book(title, author, pages)
+    newBook.id = null
     myLibrary.push(newBook)
 }
 tiles
@@ -23,20 +24,21 @@ function displayALibrary() {
         tiles.removeChild(tiles.firstChild)
     }
 
-    for (book in myLibrary) {
-        console.log(myLibrary[book].title, 
-            myLibrary[book].author, 
-            myLibrary[book].pages
-        )
+    for (let n = 0; n < myLibrary.length; n++) {
+        
         const newTile = document.createElement('div.tile');
         
-        newTile.innerHTML = `<h1 class='title'>${myLibrary[book].title}</h1>
-                             <h2 claass='author'>${myLibrary[book].author}</h2>
-                             <p class='pages'>${myLibrary[book].pages}</p>
+        newTile.innerHTML = `<h1 class='title'>${myLibrary[n].title}</h1>
+                             <h2 claass='author'>${myLibrary[n].author}</h2>
+                             <p class='pages'>${myLibrary[n].pages}</p>
                              <button class='removeBook'>Remove Book</button>`
+        
+        myLibrary[n].id = n;
 
-        tiles.appendChild(newTile)
+        tiles.appendChild(newTile);
+        console.log(myLibrary)
     }
+
 }
 
 displayALibrary()
@@ -56,8 +58,6 @@ button.addEventListener('click', function() {
 
 
 function removeBook() {
-    const btnRemoveBook = document.querySelector('.removeBook')
-    btnRemoveBook.addEventListener('click', () => {
-        tiles.removeAttribute(btnRemoveBook.parentNode) 
-    })
+    // dodac button do kazdego objectu zeby mial polaczenie z id, w buttonie 
+    // tez funkcjonalnosc usuwania objectu z arraya
 }
