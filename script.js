@@ -14,7 +14,7 @@ function addBookToLibrary(title, author, pages) {
     newBook.id = null
     myLibrary.push(newBook)
 }
-tiles
+
 addBookToLibrary('ksiazka', 'ja', 298);
 addBookToLibrary('ksiazka2', 'ja', 5656);
 addBookToLibrary('slepnacodswiatel', 'zulczyk', 450)
@@ -26,7 +26,9 @@ function displayALibrary() {
 
     for (let n = 0; n < myLibrary.length; n++) {
         
-        const newTile = document.createElement('div.tile');
+        const newTile = document.createElement(`div.tile`);
+
+        newTile.setAttribute('id', `${n}`)
         
         newTile.innerHTML = `<h1 class='title'>${myLibrary[n].title}</h1>
                              <h2 claass='author'>${myLibrary[n].author}</h2>
@@ -38,6 +40,7 @@ function displayALibrary() {
         tiles.appendChild(newTile);
         console.log(myLibrary)
     }
+    deleteBook()
 
 }
 
@@ -56,8 +59,23 @@ button.addEventListener('click', function() {
     test.textContent = newTitle
 })
 
-
-function removeBook() {
-    // dodac button do kazdego objectu zeby mial polaczenie z id, w buttonie 
-    // tez funkcjonalnosc usuwania objectu z arraya
+function deleteBook() {
+    const removeBook = document.querySelectorAll('.removeBook')
+    for (i = 0; i < removeBook.length; i++) {
+        let n = i;
+        removeBook[i].addEventListener('click', () =>{
+            console.log('wcisniete')
+            myLibrary.splice(n, 1)
+            console.log(myLibrary)
+            displayALibrary()
+        })
+    }
 }
+
+const guzik = document.querySelector('.guzik')
+guzik.addEventListener('click', ()  => {
+    console.log(myLibrary)
+    myLibrary.splice(2, 1)
+    console.log(myLibrary)
+    displayALibrary()
+})
