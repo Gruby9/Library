@@ -26,14 +26,16 @@ function displayALibrary() {
 
     for (let n = 0; n < myLibrary.length; n++) {
         
-        const newTile = document.createElement(`div.tile`);
+        const newTile = document.createElement(`div`);
 
+        newTile.setAttribute('class', `tile unread`)
         newTile.setAttribute('id', `${n}`)
         
         newTile.innerHTML = `<h1 class='title'>${myLibrary[n].title}</h1>
                              <h2 claass='author'>${myLibrary[n].author}</h2>
                              <p class='pages'>${myLibrary[n].pages}</p>
-                             <button class='removeBook'>Remove Book</button>`
+                             <button class='removeBook'>Remove Book</button>
+                             <button class='read'>Switch to Read</button>`
         
         myLibrary[n].id = n;
 
@@ -41,7 +43,7 @@ function displayALibrary() {
         console.log(myLibrary)
     }
     deleteBook()
-
+    bookRead()
 }
 
 displayALibrary()
@@ -72,10 +74,19 @@ function deleteBook() {
     }
 }
 
-const guzik = document.querySelector('.guzik')
-guzik.addEventListener('click', ()  => {
-    console.log(myLibrary)
-    myLibrary.splice(2, 1)
-    console.log(myLibrary)
-    displayALibrary()
-})
+function bookRead() {
+    const tile = document.querySelectorAll('.tile')
+    for (i = 0; i < tile.length; i++) {
+        let n = i;
+        const button = tile[i].lastChild
+        button.addEventListener('click', () => {
+            console.log('wcisniete')
+            const attribute = tile[n].getAttribute('class')
+            if (attribute === 'tile unread') {
+                tile[n].setAttribute('class', `tile read`)
+            } else {
+                tile[n].setAttribute('class', `tile unread`)
+            }
+        })
+    }
+}
