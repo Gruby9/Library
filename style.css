@@ -1,11 +1,89 @@
 body {
   background-color: #414141;
+  margin: 0;
+  padding: 0;
+}
+
+div.heading {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-shadow: 0 10px 10px 0px rgba(0, 0, 0, 0.5);
+          box-shadow: 0 10px 10px 0px rgba(0, 0, 0, 0.5);
+}
+
+div.heading .top {
+  margin: 20px 50px 20px 50px;
+}
+
+div.heading button {
+  border: 0px;
+  border-radius: 5px;
+  font-weight: 800;
+  font-size: large;
+  color: #1d8b2b;
 }
 
 .tiles {
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: (minmax(250px, 1fr))[auto-fill];
-      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 30px;
+  -ms-grid-columns: (minmax(350px, 1fr))[auto-fill];
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  margin: 40px 50px 0 50px;
+}
+
+.tiles .tile {
+  border: 4px solid #333333;
+  border-radius: 20px;
+  background-color: #a7a7a7;
+}
+
+.tiles .tile .title {
+  margin-left: 10px;
+  font-size: x-large;
+}
+
+.tiles .tile .title::before {
+  content: 'Title: ';
+}
+
+.tiles .tile h2 {
+  margin-left: 10px;
+}
+
+.tiles .tile h2::before {
+  content: 'Author: ';
+}
+
+.tiles .tile .pages {
+  margin-left: 10px;
+}
+
+.tiles .tile .pages::before {
+  content: 'Number of pages: ';
+}
+
+.tiles .tile button {
+  margin-left: 10px;
+  margin-bottom: 15px;
+  padding: 0 20px 0 20px;
+  border: 0px;
+  border-radius: 5px;
+}
+
+.tiles .tile .removeBook {
+  background-color: #b16868;
+}
+
+.tiles .tile .read {
+  background-color: #68b172;
+}
+
+.tiles .tile.read {
+  border: 4px solid #68b172;
 }
 /*# sourceMappingURL=style.css.map */
